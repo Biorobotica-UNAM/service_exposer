@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>service_exposer</name>
+  <version>0.0.1</version>
+  <description>
+    Service exposer node for Takeshis Hardware
+  </description>
+
+  <maintainer email="marco.soriano5102@comunidad.unam.mx">Marco Soriano</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>rclcpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_srvs</build_depend>
+  <build_depend>head_interfaces</build_depend>
+
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+  <exec_depend>head_interfaces</exec_depend>
+
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

@@ -1,0 +1,15 @@
+<launch>
+
+  <group>
+    <push_ros_namespace namespace="service_exposer" />
+
+    <node
+      pkg="service_exposer"
+      exec="service_exposer_node"
+      name="service_exposer_node"
+      output="screen"
+    />
+  </group>
+
+</launch>
+
