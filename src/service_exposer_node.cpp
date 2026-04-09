@@ -3,6 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float64_multi_array.hpp"
+#include "std_msgs/msg/float64.hpp"
 #include "std_msgs/msg/bool.hpp"
 #include "head_interfaces/srv/move_head.hpp"
 #include "arms_interfaces/srv/move_arms.hpp"
@@ -33,7 +34,7 @@ public:
             "/hardware/arm/goal_pose",
             rclcpp::QoS(10).transient_local());
 
-        pub_torso_goal_pose_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+        pub_torso_goal_pose_ = this->create_publisher<std_msgs::msg::Float64>(
             "/hardware/torso/goal_pose",
             rclcpp::QoS(10).transient_local());
 
@@ -85,7 +86,7 @@ private:
     // Publishers
     rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr pub_head_goal_pose_;
     rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr pub_arm_goal_pose_;
-    rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr pub_torso_goal_pose_;
+    rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr           pub_torso_goal_pose_;
 
     //############
     // Subscribers
@@ -184,8 +185,8 @@ private:
     {
         try
         {
-            std_msgs::msg::Float64MultiArray msg;
-            msg.data.push_back(request->position);
+            std_msgs::msg::Float64 msg;
+            msg.data = request->position;
             pub_torso_goal_pose_->publish(msg);
 
             response->success = true;
